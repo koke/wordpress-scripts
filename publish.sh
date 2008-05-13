@@ -7,6 +7,14 @@ fi
 
 PLUGIN=$1
 VERSION=$2
+BASEURL=$( cat ~/.wpplugins )
+
+if [ "x$BASEURL" == "x" ]; then
+    echo "You need to write where to upload the plugin in the ~/.wpplugins file"
+    echo "Example:"
+    echo "  echo myserver.example.com:public_html/plugins/ > ~/.wpplugins"
+    exit 3
+fi
 
 if [ ! -d "wp-content" ]; then
     echo "You need to run this script from the wordpress base directory"
@@ -27,5 +35,5 @@ git tag -s v$VERSION -m "Version $VERSION"
 git push --mirror
 git archive --format=tar --prefix=$PLUGIN/ v$VERSION | gzip -c9 > $PLUGIN-$VERSION.tar.gz
 tar tzvf $PLUGIN-$VERSION.tar.gz
-scp $PLUGIN-$VERSION.tar.gz moe.warp.es:public_html/wp-plugins/$PLUGIN/
+scp $PLUGIN-$VERSION.tar.gz $BASEURL/$PLUGIN/
 popd
