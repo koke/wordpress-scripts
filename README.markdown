@@ -1,7 +1,10 @@
 wordpress-scripts
 =================
 
-A small collection of utilities to manage wordpress installations
+A small collection of utilities to manage wordpress installations.
+
+**Waning:** these are early versions which I use for small tasks. If you find
+a bug or have suggestions, contact me at <jbernal@warp.es>
 
 Scripts
 -------
