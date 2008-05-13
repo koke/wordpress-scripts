@@ -8,7 +8,7 @@ Scripts
 
 ### wp-dump
 
-wp-dump hepls you to backup your wordpress database. Just tell where is the wordpress directory and where to put the dump file
+wp-dump helps you to backup your wordpress database. Just tell where is the wordpress directory and where to put the dump file
 
 #### Syntax
 
@@ -49,7 +49,7 @@ First, you need a config file called `~/.wpplugins`. An sample way to do this is
 where `myserver.example.com` is your server and `public_html/plugins/` is the
 path (relative from your $HOME) to upload the tarballs
 
-publish.sh can also replace version numbers in your plugin. It will detect these to cases
+publish.sh can also replace version numbers in your plugin. It will detect these two cases
 
 * Plugin header: Version 0.1
 * Version constant: define(plugin\_name\_version, '0.1');
