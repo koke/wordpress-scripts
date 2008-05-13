@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php
+
+
+if ($argc != 3) {
+  printf("Usage: %s wp-dir outfile\n", $argv[0]);
+  die;
+}
+
+$wp_path = $argv[1];
+$backup_name = $argv[2];
+$wp_dir = basename($wp_path);
+
+if (!is_dir($wp_path)) {
+  printf("Invalid dir\n");
+  die;
+}
+
+require $wp_path."/wp-config.php";
+
+echo "Backing up database...\n";
+system(sprintf("mysqldump -h %s -u %s -p%s %s | gzip -c9 > $backup_name", DB_HOST, DB_USER, DB_PASSWORD, DB_NAME));

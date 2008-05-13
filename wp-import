@@ -1,0 +1,27 @@
+#!/usr/bin/env php
+<?php
+
+
+if ($argc != 3) {
+  printf("Usage: %s wp-dir infile\n", $argv[0]);
+  die;
+}
+
+$wp_path = $argv[1];
+$backup_name = $argv[2];
+$wp_dir = basename($wp_path);
+
+if (!is_dir($wp_path)) {
+  printf("Invalid dir\n");
+  die;
+}
+
+require $wp_path."/wp-config.php";
+
+echo "Importing database...\n";
+if ($password == "") {
+    $popt = "";
+} else {
+    $popt = "-p%s"
+}
+system(sprintf("zcat %s | mysql -h %s -u %s $popt %s", $backup_name, DB_HOST, DB_USER, DB_PASSWORD, DB_NAME));
