@@ -4,7 +4,7 @@ wordpress-scripts
 A small collection of utilities to manage wordpress installations.
 http://people.warp.es/~koke/wordpress-scripts/
 
-**Waning:** these are early versions which I use for small tasks. If you find
+**Warning:** these are early versions which I use for small tasks. If you find
 a bug or have suggestions, contact me at <jbernal@warp.es>
 
 Scripts
