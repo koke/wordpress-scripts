@@ -28,7 +28,7 @@ if (!preg_match('/^http:\/\//', $host_name)) {
 }
 echo "Changing siteurl to $host_name...\n";
 $sql = "UPDATE wp_options SET option_value = '$host_name' WHERE option_name = 'siteurl'";
-system(sprintf("mysql -h %s -u %s $popt %s -e '%s'", $backup_name, DB_HOST, DB_USER, DB_NAME, $sql));
+system(sprintf("mysql -h %s -u %s $popt %s -e '%s'", DB_HOST, DB_USER, DB_NAME, $sql));
 echo "Changing siteurl to $host_name...\n";
 $sql = "UPDATE wp_options SET option_value = '$host_name' WHERE option_name = 'siteurl'";
-system(sprintf("mysql -h %s -u %s $popt %s -e '%s'", $backup_name, DB_HOST, DB_USER, DB_NAME, $sql));
+system(sprintf("mysql -h %s -u %s $popt %s -e '%s'", DB_HOST, DB_USER, DB_NAME, $sql));
