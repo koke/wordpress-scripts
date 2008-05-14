@@ -58,6 +58,14 @@ publish.sh can also replace version numbers in your plugin. It will detect these
 * Plugin header: Version 0.1
 * Version constant: define(plugin\_name\_version, '0.1');
 
+### wp-update-home
+
+When you are syncing wordpress databases, one of the fundamental things to change is the `siteurl` and `home` options with the remote URL.
+
+#### Syntax
+
+`$ wp-update-home wordpress-dir myhost.example.com`
+
 License
 -------
 
