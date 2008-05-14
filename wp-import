@@ -22,6 +22,6 @@ echo "Importing database...\n";
 if (DB_PASSWORD == "") {
     $popt = "";
 } else {
-    $popt = "-p" . DB_PASSWORD
+    $popt = "-p" . DB_PASSWORD;
 }
 system(sprintf("zcat %s | mysql -h %s -u %s $popt %s", $backup_name, DB_HOST, DB_USER, DB_NAME));

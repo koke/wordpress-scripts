@@ -22,6 +22,6 @@ echo "Backing up database...\n";
 if (DB_PASSWORD == "") {
     $popt = "";
 } else {
-    $popt = "-p" . DB_PASSWORD
+    $popt = "-p" . DB_PASSWORD;
 }
 system(sprintf("mysqldump -h %s -u %s $popt %s | gzip -c9 > $backup_name", DB_HOST, DB_USER, DB_NAME));
