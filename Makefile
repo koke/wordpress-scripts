@@ -6,7 +6,8 @@ REMOTE_PATH = public_html/wordpress-scripts
 FILES = README.markdown \
 		publish.sh \
 		wp-import \
-		wp-dump
+		wp-dump \
+		wp-update-home
 
 release: pkg/$(RELEASE).tar.gz
 	@echo "Released version $(VERSION)"
