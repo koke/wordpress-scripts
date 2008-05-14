@@ -21,7 +21,7 @@ require $wp_path."/wp-config.php";
 if ($password == "") {
     $popt = "";
 } else {
-    $popt = "-p%s"
+    $popt = "-p%s";
 }
 if (!preg_match('/^http:\/\/', $host_name)) {
     $host_name = "http://$host_name";    
