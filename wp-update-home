@@ -18,10 +18,10 @@ if (!is_dir($wp_path)) {
 
 require $wp_path."/wp-config.php";
 
-if ($password == "") {
+if (DB_PASSWORD == "") {
     $popt = "";
 } else {
-    $popt = "-p%s";
+    $popt = "-p" . DB_PASSWORD
 }
 if (!preg_match('/^http:\/\//', $host_name)) {
     $host_name = "http://$host_name";    

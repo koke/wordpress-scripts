@@ -19,9 +19,9 @@ if (!is_dir($wp_path)) {
 require $wp_path."/wp-config.php";
 
 echo "Importing database...\n";
-if ($password == "") {
+if (DB_PASSWORD == "") {
     $popt = "";
 } else {
-    $popt = "-p%s"
+    $popt = "-p" . DB_PASSWORD
 }
-system(sprintf("zcat %s | mysql -h %s -u %s $popt %s", $backup_name, DB_HOST, DB_USER, DB_PASSWORD, DB_NAME));
+system(sprintf("zcat %s | mysql -h %s -u %s $popt %s", $backup_name, DB_HOST, DB_USER, DB_NAME));
