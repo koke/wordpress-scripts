@@ -10,6 +10,21 @@ a bug or have suggestions, contact me at <jbernal@warp.es>
 Scripts
 -------
 
+### wp-backup
+
+wp-backup makes a full backup of your wordpress dir and database
+
+#### Syntax
+
+`$ wp-backup wordpress-dir backup-dir`
+
+`backup-dir` is the base directory for backups. The real backup will be named using the wordpress dir name and current date/time
+
+	$ wp-backup koke.amedias.org /home/koke/backups
+	...
+	$ ls backups/
+	backups/koke.amedias.org-20080523032213.sql  backups/koke.amedias.org-20080523032213.tar.bz2
+
 ### wp-dump
 
 wp-dump helps you to backup your wordpress database. Just tell where is the wordpress directory and where to put the dump file
