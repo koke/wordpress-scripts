@@ -1,0 +1,34 @@
+#!/usr/bin/env php
+<?php
+
+// $backup_base = "/home/koke/backups";
+
+if ($argc != 3) {
+  printf("Usage: %s wp-dir backups-dir\n", $argv[0]);
+  die;
+}
+
+$wp_path = realpath($argv[1]);
+$wp_dir = basename($wp_path);
+$backup_base = realpath($argv[2]);
+$wp_parent = dirname($wp_path);
+
+if (!is_dir($wp_path)) {
+  printf("Invalid dir\n");
+  die;
+}
+
+$backup_name = "$backup_base/$wp_dir-".date("Ymdhis");
+
+require $wp_path."/wp-config.php";
+
+echo "Backing up files...\n";
+echo("tar -C $wp_parent -jcvf $backup_name.tar.bz2 $wp_dir");
+system("tar -C $wp_parent -jcvf $backup_name.tar.bz2 $wp_dir");
+echo "Backing up database...\n";
+if (DB_PASSWORD == "") {
+    $popt = "";
+} else {
+    $popt = "-p" . DB_PASSWORD;
+}
+system(sprintf("mysqldump -h %s -u %s $popt %s | gzip -c9 > $backup_name.sql.gz", DB_HOST, DB_USER, DB_NAME));
