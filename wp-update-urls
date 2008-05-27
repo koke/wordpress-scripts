@@ -1,0 +1,32 @@
+#!/usr/bin/env php
+<?php
+
+
+if ($argc != 3) {
+  printf("Usage: %s wp-dir old_host new_host\n", $argv[0]);
+  die;
+}
+
+$wp_path = $argv[1];
+$old_host = $argv[2];
+$new_host = $argv[3];
+$wp_dir = basename($wp_path);
+
+if (!is_dir($wp_path)) {
+  printf("Invalid dir\n");
+  die;
+}
+
+require $wp_path."/wp-config.php";
+
+if (DB_PASSWORD == "") {
+    $popt = "";
+} else {
+    $popt = "-p" . DB_PASSWORD;
+}
+if (!preg_match('/^http:\/\//', $host_name)) {
+    $host_name = "http://$host_name";    
+}
+echo "Changing $old_host to $new_host...\n";
+$sql = "UPDATE ${table_prefix}posts SET post_content = REPLACE(post_content, 'http://$old_host', 'http://$new_host')";
+system(sprintf("mysql -h %s -u %s $popt %s -e \"%s\"", DB_HOST, DB_USER, DB_NAME, $sql));
