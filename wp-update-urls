@@ -2,7 +2,7 @@
 <?php
 
 
-if ($argc != 3) {
+if ($argc != 4) {
   printf("Usage: %s wp-dir old_host new_host\n", $argv[0]);
   die;
 }
